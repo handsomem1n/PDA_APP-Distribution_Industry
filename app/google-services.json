@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "119062321087",
+    "project_id": "pda-project-16fe5",
+    "storage_bucket": "pda-project-16fe5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119062321087:android:c18a361e198ad3bc89b30a",
+        "android_client_info": {
+          "package_name": "com.example.pda"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOjbcMxP98z7pcBgw0yjM92nfRNal_6-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119062321087:android:c57c58992583df3d89b30a",
+        "android_client_info": {
+          "package_name": "com.example.pda_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOjbcMxP98z7pcBgw0yjM92nfRNal_6-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
