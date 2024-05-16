@@ -113,9 +113,9 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
             }
-            "export" -> {
+            "users" -> {
                 // 일반 사용자 기능 활성화
-                startActivity(Intent(this, PDAExportActivity::class.java))
+                startActivity(Intent(this, ModeSelectActivity::class.java))
                 finish()
             }
             else -> {

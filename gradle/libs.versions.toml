@@ -13,6 +13,7 @@ googleServices = "4.4.1"
 firebaseAuth = "23.0.0"
 firebaseDatabaseKtx = "21.0.0"
 firebaseFirestoreKtx = "25.0.0"
+googleGmsGoogleServices = "4.4.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -31,4 +32,5 @@ firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-fires
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+googleGmsGoogleServices = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 
