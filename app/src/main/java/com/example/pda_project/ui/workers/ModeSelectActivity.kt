@@ -1,10 +1,11 @@
-package com.example.pda_project
+package com.example.pda_project.ui.workers
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
+import com.example.pda_project.PDAExportActivity
+import com.example.pda_project.R
 
 class ModeSelectActivity : AppCompatActivity() {
 
@@ -12,23 +13,22 @@ class ModeSelectActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mode_select)
 
-        val pdaExportButton: Button = findViewById(R.id.pdaExportButton)
-        val pdaImportButton: Button = findViewById(R.id.pdaImportButton)
-        val buttonBottomRight: Button = findViewById(R.id.buttonReportError)
+        val pdaExportButton = findViewById<Button>(R.id.pdaExportButton)
+        val pdaImportButton = findViewById<Button>(R.id.pdaImportButton)
+        val buttonErrorReport = findViewById<Button>(R.id.buttonReportError)
 
-        // Button to go to another Activity
+        // 출고 버튼
         pdaExportButton.setOnClickListener {
             val intent = Intent(this, PDAExportActivity::class.java)
             startActivity(intent)
         }
 
-        // Button to load a Fragment
+        // 입고 버튼
         pdaImportButton.setOnClickListener {
             //loadFragment(SampleFragment())
         }
 
-        // Bottom right button action
-        val buttonErrorReport = findViewById<Button>(R.id.buttonReportError)
+        // 오류보고 버튼
         buttonErrorReport.setOnClickListener {
             val fragment = ReportErrorFragment()
             supportFragmentManager.beginTransaction()

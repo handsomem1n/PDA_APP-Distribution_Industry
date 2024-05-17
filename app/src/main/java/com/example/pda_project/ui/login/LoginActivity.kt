@@ -1,4 +1,4 @@
-package com.example.pda_project
+package com.example.pda_project.ui.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.pda_project.MainActivity
+import com.example.pda_project.ui.workers.ModeSelectActivity
+import com.example.pda_project.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.security.MessageDigest
@@ -108,12 +111,12 @@ class LoginActivity : AppCompatActivity() {
 
     private fun provideFeaturesBasedOnRole(role: String) {
         when (role) {
-            "admin" -> {
+            "manager" -> {
                 // 관리자 기능 활성화
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
             }
-            "users" -> {
+            "workers" -> {
                 // 일반 사용자 기능 활성화
                 startActivity(Intent(this, ModeSelectActivity::class.java))
                 finish()

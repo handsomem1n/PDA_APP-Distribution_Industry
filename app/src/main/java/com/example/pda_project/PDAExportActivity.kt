@@ -1,9 +1,12 @@
 package com.example.pda_project
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
-import android.widget.FrameLayout
+import android.widget.Toast
+import androidx.fragment.app.FragmentResultListener
+import androidx.fragment.app.commit
 
 class PDAExportActivity : AppCompatActivity() {
 
@@ -14,32 +17,21 @@ class PDAExportActivity : AppCompatActivity() {
         findViewById<Button>(R.id.buttonOpenScanner).setOnClickListener {
             openScanner()
         }
-        val buttonErrorReport = findViewById<Button>(R.id.buttonReportError)
-        buttonErrorReport.setOnClickListener {
-            val fragment = ReportErrorFragment()
-            supportFragmentManager.beginTransaction()
-                .setCustomAnimations(R.anim.slide_in_up, R.anim.slide_out_down)
-                .replace(R.id.mainScreen, fragment)
-                .addToBackStack(null)
-                .commit()
-        }
+
+        // 바코드 스캔 결과를 받기 위한 리스너 등록
+        supportFragmentManager.setFragmentResultListener("barcode_scan", this, FragmentResultListener { requestKey, bundle ->
+            val result = bundle.getString("barcode")
+            // 스캔된 바코드 값을 로그로 출력
+            Log.d("PDAExportActivity", "Scanned barcode: $result")
+            // 스캔된 바코드 값을 Toast로 출력
+            Toast.makeText(this, "Scanned barcode: $result", Toast.LENGTH_SHORT).show()
+        })
     }
 
     private fun openScanner() {
-        // FrameLayout의 레이아웃 파라미터 설정
-        val layoutParams = FrameLayout.LayoutParams(
-            FrameLayout.LayoutParams.MATCH_PARENT,
-            FrameLayout.LayoutParams.MATCH_PARENT
-        )
-
-        // BarcodeScannerFragment 생성
-        val scannerFragment = BarcodeScannerFragment()
-        scannerFragment.view?.layoutParams = layoutParams
-
-        // 프래그먼트를 `fragment_container`에 추가합니다.
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, scannerFragment)
-            .commit()
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.mainScreen, BarcodeScannerFragment())
+        transaction.addToBackStack(null)
+        transaction.commitAllowingStateLoss()
     }
-
 }

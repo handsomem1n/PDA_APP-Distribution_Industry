@@ -18,8 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pda_project"
-        tools:targetApi="31">
-        <activity android:name=".LoginActivity"
+        tools:targetApi="31"
+        >
+        <activity android:name=".ui.login.LoginActivity"
             android:exported="true">
 
         </activity>
@@ -35,13 +36,21 @@
         </activity>
 
         <activity
-            android:name=".ModeSelectActivity"
+            android:name=".ui.workers.ModeSelectActivity"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".ManagerModeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".CheckErrorReportsActivity"/>
+        <activity android:name=".ErrorReportDetailActivity"/>
 
     </application>
 

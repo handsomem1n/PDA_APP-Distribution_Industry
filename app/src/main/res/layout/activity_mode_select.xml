@@ -7,7 +7,7 @@
         android:id="@+id/mainLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ModeSelectActivity">
+        tools:context=".ui.workers.ModeSelectActivity">
 
         <LinearLayout
             android:layout_width="wrap_content"
