@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/buttonApproveStock"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="입고승인" />
+
+    <Button
+        android:id="@+id/buttonCheckAndEditStock"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="재고확인 및 수정"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/buttonCheckErrorReports"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="오류 보고서 확인"
+        android:layout_marginTop="16dp" />
+
+</LinearLayout>
