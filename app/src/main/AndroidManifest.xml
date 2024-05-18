@@ -31,17 +31,12 @@
         </activity>
 
         <activity
-            android:name=".PDAExportActivity"
+            android:name=".ui.workers.outbound.ToteScanActivity"
             android:exported="true">
         </activity>
 
         <activity
             android:name=".ui.workers.ModeSelectActivity"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".ManagerModeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -49,8 +44,16 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ManagerModeActivity"
+            android:exported="true">
+
+        </activity>
+
         <activity android:name=".CheckErrorReportsActivity"/>
         <activity android:name=".ErrorReportDetailActivity"/>
+        <activity android:name=".ui.workers.outbound.WarehouseScanActivity"/>
+        <activity android:name=".ui.workers.outbound.ItemsScanActivity"/>
 
     </application>
 

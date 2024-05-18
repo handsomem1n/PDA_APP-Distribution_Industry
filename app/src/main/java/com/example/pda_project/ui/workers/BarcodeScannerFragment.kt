@@ -1,4 +1,4 @@
-package com.example.pda_project
+package com.example.pda_project.ui.workers
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
@@ -83,6 +82,8 @@ class BarcodeScannerFragment : Fragment() {
                                 })
                                 if (isAdded && !isDetached) {
                                     parentFragmentManager.popBackStack() // 프래그먼트 닫기
+                                    // 카메라 해제
+                                    cameraProvider.unbindAll()
                                 }
                             }
                         }
@@ -100,6 +101,17 @@ class BarcodeScannerFragment : Fragment() {
                 Log.e(TAG, "Use case binding failed", exc)
             }
         }, ContextCompat.getMainExecutor(requireContext()))
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        cameraExecutor.shutdown()
+        ProcessCameraProvider.getInstance(requireContext()).get().unbindAll()
+    }
+
+    fun releaseResources() {
+        cameraExecutor.shutdown()
+        ProcessCameraProvider.getInstance(requireContext()).get().unbindAll()
     }
 
     private inner class BarcodeAnalyzer(private val onBarcodeDetected: (barcodes: List<Barcode>) -> Unit) : ImageAnalysis.Analyzer {
@@ -121,11 +133,6 @@ class BarcodeScannerFragment : Fragment() {
                     }
             }
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        cameraExecutor.shutdown()
     }
 
     override fun onRequestPermissionsResult(

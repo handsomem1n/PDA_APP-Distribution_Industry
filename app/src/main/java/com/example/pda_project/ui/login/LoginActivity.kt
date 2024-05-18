@@ -122,7 +122,7 @@ class LoginActivity : AppCompatActivity() {
                 finish()
             }
             else -> {
-                Toast.makeText(this, "Unknown role: $role", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "관리자 승인 이후 로그인 가능합니다.: $role", Toast.LENGTH_SHORT).show()
             }
         }
     }

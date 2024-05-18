@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.example.pda_project.PDAExportActivity
+import com.example.pda_project.ui.workers.outbound.ToteScanActivity
 import com.example.pda_project.R
 
 class ModeSelectActivity : AppCompatActivity() {
@@ -19,7 +19,7 @@ class ModeSelectActivity : AppCompatActivity() {
 
         // 출고 버튼
         pdaExportButton.setOnClickListener {
-            val intent = Intent(this, PDAExportActivity::class.java)
+            val intent = Intent(this, ToteScanActivity::class.java)
             startActivity(intent)
         }
 
