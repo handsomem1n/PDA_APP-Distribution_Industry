@@ -25,7 +25,6 @@ class WarehouseScanActivity : AppCompatActivity() {
 
         // 저장된 데이터 불러오기
         loadWarehouseNumberFromCache()
-
         warehouseNumberTextView.text = "찾아야 할 창고 번호: $warehouseNumber"
 
         findViewById<Button>(R.id.buttonOpenScanner).setOnClickListener {

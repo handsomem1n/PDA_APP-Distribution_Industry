@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pda_project.MainActivity
+import com.example.pda_project.ManagerModeActivity
 import com.example.pda_project.ui.workers.ModeSelectActivity
 import com.example.pda_project.R
 import com.google.firebase.auth.FirebaseAuth
@@ -113,7 +114,7 @@ class LoginActivity : AppCompatActivity() {
         when (role) {
             "manager" -> {
                 // 관리자 기능 활성화
-                startActivity(Intent(this, MainActivity::class.java))
+                startActivity(Intent(this, ManagerModeActivity::class.java))
                 finish()
             }
             "workers" -> {

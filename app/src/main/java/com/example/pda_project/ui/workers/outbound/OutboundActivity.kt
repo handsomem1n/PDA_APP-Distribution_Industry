@@ -12,13 +12,13 @@ import com.example.pda_project.ui.workers.BarcodeScannerFragment
 import com.example.pda_project.R
 import com.google.firebase.firestore.FirebaseFirestore
 
-class ToteScanActivity : AppCompatActivity() {
+class OutboundActivity : AppCompatActivity() {
 
     private lateinit var firestore: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tote_scan)
+        setContentView(R.layout.activity_outbound)
 
         firestore = FirebaseFirestore.getInstance()
 

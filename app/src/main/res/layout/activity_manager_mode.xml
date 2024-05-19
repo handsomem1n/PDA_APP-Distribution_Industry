@@ -6,13 +6,13 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/buttonApproveStock"
+        android:id="@+id/inboundAcceptButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="입고승인" />
 
     <Button
-        android:id="@+id/buttonCheckAndEditStock"
+        android:id="@+id/ManageWarehouseButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="재고확인 및 수정"

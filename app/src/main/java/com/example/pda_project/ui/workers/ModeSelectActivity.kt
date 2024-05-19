@@ -4,8 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.example.pda_project.ui.workers.outbound.ToteScanActivity
+import com.example.pda_project.ui.workers.outbound.OutboundActivity
 import com.example.pda_project.R
+import com.example.pda_project.ui.workers.inbound.InboundActivity
 
 class ModeSelectActivity : AppCompatActivity() {
 
@@ -19,13 +20,12 @@ class ModeSelectActivity : AppCompatActivity() {
 
         // 출고 버튼
         pdaExportButton.setOnClickListener {
-            val intent = Intent(this, ToteScanActivity::class.java)
-            startActivity(intent)
+            activityCall(OutboundActivity::class.java)
         }
 
         // 입고 버튼
         pdaImportButton.setOnClickListener {
-            //loadFragment(SampleFragment())
+            activityCall(InboundActivity::class.java)
         }
 
         // 오류보고 버튼
@@ -37,5 +37,11 @@ class ModeSelectActivity : AppCompatActivity() {
                 .addToBackStack(null)
                 .commit()
         }
+    }
+
+    private fun activityCall(activity: Class<*>){
+        val intent = Intent(this, activity)
+        startActivity(intent)
+        finish()
     }
 }
