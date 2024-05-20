@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentResultListener
 import com.example.pda_project.R
+import com.example.pda_project.models.Item
 import com.example.pda_project.ui.workers.BarcodeScannerFragment
 import com.example.pda_project.ui.workers.ModeSelectActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -20,7 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class InboundActivity : AppCompatActivity() {
 
-    private val inboundCache = mutableMapOf<String, MutableMap<String, Any>>() // productId -> item details
+    private val inboundCache = mutableMapOf<String, Item>() // productId -> Item
     private val firestore: FirebaseFirestore by lazy { FirebaseFirestore.getInstance() }
     private var warehouseNumber: String = ""
     private lateinit var userEmail: String
@@ -30,13 +31,11 @@ class InboundActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inbound)
 
-        // 사용자 이메일 초기화
         userEmail = FirebaseAuth.getInstance().currentUser?.email ?: ""
         if (userEmail.isEmpty()) {
             Toast.makeText(this, "사용자 이메일을 불러오지 못했습니다.", Toast.LENGTH_SHORT).show()
         }
 
-        // 창고 번호 선택 스피너 초기화
         warehouseSpinner = findViewById(R.id.warehouseSpinner)
         ArrayAdapter.createFromResource(
             this,
@@ -87,28 +86,17 @@ class InboundActivity : AppCompatActivity() {
     }
 
     private fun processScannedBarcode(barcode: String) {
-        fetchItemDetails(barcode)
-    }
-
-    private fun fetchItemDetails(productId: String) {
-        firestore.collection("itemsData").document(productId)
-            .get()
-            .addOnSuccessListener { document ->
-                if (document.exists()) {
-                    val itemName = document.getString("item") ?: "Unknown Item"
-                    val itemDetails = inboundCache.getOrPut(productId) {
-                        mutableMapOf("item" to itemName, "amount" to 0L)
-                    }
-                    itemDetails["amount"] = (itemDetails["amount"] as Long) + 1
-                    Toast.makeText(this, "물품 추가: $itemName", Toast.LENGTH_SHORT).show()
+        Item.fetchItemDetails(this, barcode) { item ->
+            if (item != null) {
+                val currentItem = inboundCache[barcode]
+                if (currentItem != null) {
+                    currentItem.amount += 1
                 } else {
-                    Toast.makeText(this, "Item not found in itemsData", Toast.LENGTH_SHORT).show()
+                    inboundCache[barcode] = item
                 }
+                Toast.makeText(this, "물품 추가: ${item.itemName}", Toast.LENGTH_SHORT).show()
             }
-            .addOnFailureListener { exception ->
-                Log.e("InboundActivity", "Error fetching item details", exception)
-                Toast.makeText(this, "Error fetching item details", Toast.LENGTH_SHORT).show()
-            }
+        }
     }
 
     private fun completeInbound() {
@@ -126,8 +114,8 @@ class InboundActivity : AppCompatActivity() {
         val warehouseRef = firestore.collection("warehouseTemp").document(documentName)
         val updateData = mutableMapOf<String, Any>()
 
-        inboundCache.forEach { (productId, itemDetails) ->
-            updateData[productId] = itemDetails
+        inboundCache.forEach { (productId, item) ->
+            updateData[productId] = mapOf("item" to item.itemName, "amount" to item.amount)
         }
 
         warehouseRef.set(updateData)
