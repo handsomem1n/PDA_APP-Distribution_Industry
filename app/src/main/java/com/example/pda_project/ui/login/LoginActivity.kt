@@ -91,7 +91,7 @@ class LoginActivity : AppCompatActivity() {
                                 val userRole = document.getString("role")
                                 userRole?.let { role ->
                                     // 기능 부여
-                                    provideFeaturesBasedOnRole(role)
+                                    usersRole(role)
                                 }
                             } else {
                                 Toast.makeText(this, "해당 사용자를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show()
@@ -110,7 +110,7 @@ class LoginActivity : AppCompatActivity() {
         return bytes.fold("", { str, it -> str + "%02x".format(it) })
     }
 
-    private fun provideFeaturesBasedOnRole(role: String) {
+    private fun usersRole(role: String) {
         when (role) {
             "manager" -> {
                 // 관리자 기능 활성화
