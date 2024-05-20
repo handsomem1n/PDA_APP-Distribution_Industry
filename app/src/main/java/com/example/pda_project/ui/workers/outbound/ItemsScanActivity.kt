@@ -12,12 +12,14 @@ import androidx.fragment.app.FragmentResultListener
 import com.example.pda_project.R
 import com.example.pda_project.ui.workers.BarcodeScannerFragment
 import com.example.pda_project.ui.workers.ModeSelectActivity
+import com.example.pda_project.ui.workers.Scanner
 import com.google.firebase.firestore.FirebaseFirestore
 
 class ItemsScanActivity : AppCompatActivity() {
 
     private lateinit var itemTextView: TextView
     private lateinit var openScannerButton: Button
+    private lateinit var scanner: Scanner
 
     private lateinit var toteId: String
     private lateinit var warehouseNumber: String
@@ -33,6 +35,7 @@ class ItemsScanActivity : AppCompatActivity() {
 
         itemTextView = findViewById(R.id.itemTextView)
         openScannerButton = findViewById(R.id.openScannerButton)
+        scanner = Scanner(this)
 
         // 캐시에서 데이터 불러오기
         loadDataFromCache()
@@ -43,7 +46,7 @@ class ItemsScanActivity : AppCompatActivity() {
         updateItemTextView()
 
         openScannerButton.setOnClickListener {
-            openScanner()
+            scanner.openScanner()
         }
 
         // 바코드 스캔 결과를 받기 위한 리스너 등록
@@ -56,13 +59,6 @@ class ItemsScanActivity : AppCompatActivity() {
                 processScannedBarcode(result)
             }
         })
-    }
-
-    private fun openScanner() {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.mainScreen, BarcodeScannerFragment(), "BarcodeScannerFragment")
-        transaction.addToBackStack(null)
-        transaction.commit() // commitAllowingStateLoss 대신 commit 사용
     }
 
     private fun processScannedBarcode(barcode: String) {

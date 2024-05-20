@@ -14,8 +14,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentResultListener
 import com.example.pda_project.R
 import com.example.pda_project.models.Item
-import com.example.pda_project.ui.workers.BarcodeScannerFragment
 import com.example.pda_project.ui.workers.ModeSelectActivity
+import com.example.pda_project.ui.workers.Scanner
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -26,11 +26,13 @@ class InboundActivity : AppCompatActivity() {
     private var warehouseNumber: String = ""
     private lateinit var userEmail: String
     private lateinit var warehouseSpinner: Spinner
+    private lateinit var scanner: Scanner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inbound)
 
+        scanner = Scanner(this)
         userEmail = FirebaseAuth.getInstance().currentUser?.email ?: ""
         if (userEmail.isEmpty()) {
             Toast.makeText(this, "사용자 이메일을 불러오지 못했습니다.", Toast.LENGTH_SHORT).show()
@@ -62,7 +64,7 @@ class InboundActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.buttonOpenScanner).setOnClickListener {
-            openScanner()
+            scanner.openScanner()
         }
 
         findViewById<Button>(R.id.buttonCompleteInbound).setOnClickListener {
@@ -76,13 +78,6 @@ class InboundActivity : AppCompatActivity() {
                 processScannedBarcode(result)
             }
         })
-    }
-
-    private fun openScanner() {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.mainScreen, BarcodeScannerFragment(), "BarcodeScannerFragment")
-        transaction.addToBackStack(null)
-        transaction.commit()
     }
 
     private fun processScannedBarcode(barcode: String) {

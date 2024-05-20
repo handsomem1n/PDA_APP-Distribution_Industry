@@ -10,20 +10,23 @@ import android.widget.Toast
 import androidx.fragment.app.FragmentResultListener
 import com.example.pda_project.ui.workers.BarcodeScannerFragment
 import com.example.pda_project.R
+import com.example.pda_project.ui.workers.Scanner
 import com.google.firebase.firestore.FirebaseFirestore
 
 class OutboundActivity : AppCompatActivity() {
 
     private lateinit var firestore: FirebaseFirestore
+    private lateinit var scanner: Scanner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_outbound)
 
         firestore = FirebaseFirestore.getInstance()
+        scanner = Scanner(this)
 
         findViewById<Button>(R.id.buttonOpenScanner).setOnClickListener {
-            openScanner()
+            scanner.openScanner()
         }
 
         // 바코드 스캔 결과를 받기 위한 리스너 등록
@@ -43,12 +46,6 @@ class OutboundActivity : AppCompatActivity() {
         })
     }
 
-    private fun openScanner() {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.mainScreen, BarcodeScannerFragment(), "BarcodeScannerFragment")
-        transaction.addToBackStack(null)
-        transaction.commit()
-    }
 
     private fun saveBarcodeToCache(barcode: String) {
         val sharedPref = getSharedPreferences("pda_project", Context.MODE_PRIVATE)

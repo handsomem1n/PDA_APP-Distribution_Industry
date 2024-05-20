@@ -11,24 +11,26 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentResultListener
 import com.example.pda_project.R
 import com.example.pda_project.ui.workers.BarcodeScannerFragment
+import com.example.pda_project.ui.workers.Scanner
 
 class WarehouseScanActivity : AppCompatActivity() {
 
     private lateinit var warehouseNumberTextView: TextView
     private var warehouseNumber: String = ""
+    private lateinit var scanner: Scanner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_warehouse_scan)
 
         warehouseNumberTextView = findViewById(R.id.warehouseNumberTextView)
-
+        scanner = Scanner(this)
         // 저장된 데이터 불러오기
         loadWarehouseNumberFromCache()
         warehouseNumberTextView.text = "찾아야 할 창고 번호: $warehouseNumber"
 
         findViewById<Button>(R.id.buttonOpenScanner).setOnClickListener {
-            openScanner()
+            scanner.openScanner()
         }
 
         // 바코드 스캔 결과를 받기 위한 리스너 등록
@@ -51,13 +53,6 @@ class WarehouseScanActivity : AppCompatActivity() {
                 Toast.makeText(this, "창고 바코드를 찍어야 합니다", Toast.LENGTH_SHORT).show()
             }
         })
-    }
-
-    private fun openScanner() {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.mainScreen, BarcodeScannerFragment(), "BarcodeScannerFragment")
-        transaction.addToBackStack(null)
-        transaction.commit() // commitAllowingStateLoss 대신 commit 사용
     }
 
     private fun loadWarehouseNumberFromCache() {
