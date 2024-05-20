@@ -3,9 +3,9 @@ package com.example.pda_project.adapters.manager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pda_project.R
+import com.example.pda_project.helpers.ItemBindingHelper
 import com.example.pda_project.models.manager.Item
 
 class ItemListAdapter(
@@ -20,15 +20,10 @@ class ItemListAdapter(
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = itemList[position]
-        holder.itemNameTextView.text = item.itemName
-        holder.itemView.setOnClickListener {
-            onItemClick(item.id, item.itemName)
-        }
+        ItemBindingHelper.bind(holder.itemView, item, onItemClick)
     }
 
     override fun getItemCount() = itemList.size
 
-    class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val itemNameTextView: TextView = itemView.findViewById(R.id.itemNameTextView)
-    }
+    class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }
