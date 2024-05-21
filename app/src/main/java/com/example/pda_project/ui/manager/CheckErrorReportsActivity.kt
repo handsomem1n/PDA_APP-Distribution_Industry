@@ -5,9 +5,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pda_project.adapters.manager.ErrorReportAdapter
-import com.example.pda_project.adapters.manager.ErrorReportController
-import com.example.pda_project.models.manager.ErrorReport
+import com.example.pda_project.adapters.ErrorReportAdapter
+import com.example.pda_project.adapters.ErrorReportController
+import com.example.pda_project.models.ErrorReport
 
 class CheckErrorReportsActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView

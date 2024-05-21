@@ -1,8 +1,8 @@
-package com.example.pda_project.adapters.manager
+package com.example.pda_project.adapters
 
 import android.annotation.SuppressLint
 import android.util.Log
-import com.example.pda_project.models.manager.ErrorReport
+import com.example.pda_project.models.ErrorReport
 import com.google.firebase.firestore.FirebaseFirestore
 
 object ErrorReportController {

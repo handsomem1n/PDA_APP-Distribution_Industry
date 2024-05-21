@@ -7,7 +7,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 data class Item(
     val productId: String,
     val itemName: String,
-    var amount: Long
+    var amount: Int
 ) {
     companion object {
         private val firestore: FirebaseFirestore by lazy { FirebaseFirestore.getInstance() }

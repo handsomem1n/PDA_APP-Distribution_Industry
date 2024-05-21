@@ -8,7 +8,7 @@ import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pda_project.R
-import com.example.pda_project.models.manager.Warehouse
+import com.example.pda_project.models.Warehouse
 import com.google.firebase.firestore.FirebaseFirestore
 
 class ManageWarehouseActivity : AppCompatActivity() {

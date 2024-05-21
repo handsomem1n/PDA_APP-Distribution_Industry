@@ -1,4 +1,4 @@
-package com.example.pda_project.models.manager
+package com.example.pda_project.models
 
 data class ErrorReport(
     var id: String = "",
