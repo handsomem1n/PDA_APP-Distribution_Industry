@@ -5,7 +5,7 @@ import android.util.Log
 import com.example.pda_project.models.manager.ErrorReport
 import com.google.firebase.firestore.FirebaseFirestore
 
-object ErrorReportManager {
+object ErrorReportController {
     @SuppressLint("StaticFieldLeak")
     private val db = FirebaseFirestore.getInstance()
 

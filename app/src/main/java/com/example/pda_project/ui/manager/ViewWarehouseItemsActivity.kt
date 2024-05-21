@@ -5,12 +5,11 @@ import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pda_project.R
-import com.example.pda_project.adapters.manager.WarehouseManager
+import com.example.pda_project.adapters.manager.WarehouseController
 import com.example.pda_project.models.manager.Item
-import com.google.firebase.firestore.FirebaseFirestore
+
 class ViewWarehouseItemsActivity : AppCompatActivity() {
     private lateinit var listView: ListView
     private lateinit var itemListAdapter: ArrayAdapter<String>
@@ -43,7 +42,7 @@ class ViewWarehouseItemsActivity : AppCompatActivity() {
     }
 
     private fun fetchWarehouseItems() {
-        WarehouseManager.fetchWarehouseItems(warehouseId) { items ->
+        WarehouseController.fetchWarehouseItems(warehouseId) { items ->
             itemList.clear()
             itemList.addAll(items)
             itemNames.clear()

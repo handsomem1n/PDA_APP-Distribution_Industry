@@ -5,7 +5,7 @@ import com.example.pda_project.models.manager.Item
 import com.example.pda_project.models.manager.Warehouse
 import com.google.firebase.firestore.FirebaseFirestore
 
-object WarehouseManager {
+object WarehouseController {
     private val db = FirebaseFirestore.getInstance()
 
     fun fetchWarehouseList(callback: (List<Warehouse>) -> Unit) {

@@ -6,9 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pda_project.adapters.manager.ErrorReportAdapter
-import com.example.pda_project.adapters.manager.ErrorReportManager
+import com.example.pda_project.adapters.manager.ErrorReportController
 import com.example.pda_project.models.manager.ErrorReport
-import com.google.firebase.firestore.FirebaseFirestore
+
 class CheckErrorReportsActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var errorReportAdapter: ErrorReportAdapter
@@ -30,7 +30,7 @@ class CheckErrorReportsActivity : AppCompatActivity() {
         }
         recyclerView.adapter = errorReportAdapter
 
-        ErrorReportManager.fetchErrorReports { errorReports ->
+        ErrorReportController.fetchErrorReports { errorReports ->
             errorReportList.addAll(errorReports)
             errorReportAdapter.notifyDataSetChanged()
         }
