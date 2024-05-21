@@ -12,7 +12,6 @@ import com.example.pda_project.ui.workers.BarcodeScannerFragment
 import com.example.pda_project.R
 import com.example.pda_project.ui.workers.Scanner
 import com.google.firebase.firestore.FirebaseFirestore
-
 class OutboundActivity : AppCompatActivity() {
 
     private lateinit var firestore: FirebaseFirestore
@@ -30,7 +29,7 @@ class OutboundActivity : AppCompatActivity() {
         }
 
         // 바코드 스캔 결과를 받기 위한 리스너 등록
-        supportFragmentManager.setFragmentResultListener("barcode_scan", this, FragmentResultListener { requestKey, bundle ->
+        supportFragmentManager.setFragmentResultListener("barcode_scan", this, FragmentResultListener { _, bundle ->
             val result = bundle.getString("barcode")
             // 스캔된 바코드 값을 로그로 출력
             Log.d("ToteScanActivity", "Scanned barcode: $result")
@@ -45,7 +44,6 @@ class OutboundActivity : AppCompatActivity() {
             }
         })
     }
-
 
     private fun saveBarcodeToCache(barcode: String) {
         val sharedPref = getSharedPreferences("pda_project", Context.MODE_PRIVATE)
@@ -77,7 +75,6 @@ class OutboundActivity : AppCompatActivity() {
                         }
                         // 캐시에 문서 데이터 저장
                         saveDocumentToCache(toteId, warehouseNumber, items)
-                        //deleteDocument(docId) // 문서 삭제 코드 (현재는 원할한 테스트를 위해 잠시 주석 처리 되어있음)
                         startActivity(Intent(this, WarehouseScanActivity::class.java))
                         finish()
                     } catch (e: Exception) {

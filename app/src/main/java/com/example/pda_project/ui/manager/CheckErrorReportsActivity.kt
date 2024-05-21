@@ -6,15 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pda_project.adapters.manager.ErrorReportAdapter
+import com.example.pda_project.adapters.manager.ErrorReportManager
 import com.example.pda_project.models.manager.ErrorReport
 import com.google.firebase.firestore.FirebaseFirestore
-
 class CheckErrorReportsActivity : AppCompatActivity() {
-
     private lateinit var recyclerView: RecyclerView
     private lateinit var errorReportAdapter: ErrorReportAdapter
     private lateinit var errorReportList: MutableList<ErrorReport>
-    private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,24 +30,9 @@ class CheckErrorReportsActivity : AppCompatActivity() {
         }
         recyclerView.adapter = errorReportAdapter
 
-        db = FirebaseFirestore.getInstance()
-        fetchErrorReports()
-    }
-
-    private fun fetchErrorReports() {
-        db.collection("errorReport")
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    val errorReport = document.toObject(ErrorReport::class.java).apply {
-                        id = document.id
-                    }
-                    errorReportList.add(errorReport)
-                }
-                errorReportAdapter.notifyDataSetChanged()
-            }
-            .addOnFailureListener { exception ->
-                // Handle the error
-            }
+        ErrorReportManager.fetchErrorReports { errorReports ->
+            errorReportList.addAll(errorReports)
+            errorReportAdapter.notifyDataSetChanged()
+        }
     }
 }
