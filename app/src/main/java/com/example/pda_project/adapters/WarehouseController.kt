@@ -1,8 +1,8 @@
-package com.example.pda_project.adapters.manager
+package com.example.pda_project.adapters
 
 import android.util.Log
-import com.example.pda_project.models.manager.Item
-import com.example.pda_project.models.manager.Warehouse
+import com.example.pda_project.models.Item
+import com.example.pda_project.models.Warehouse
 import com.google.firebase.firestore.FirebaseFirestore
 
 object WarehouseController {

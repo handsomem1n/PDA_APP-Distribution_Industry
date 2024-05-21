@@ -7,8 +7,8 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pda_project.R
-import com.example.pda_project.adapters.manager.WarehouseController
-import com.example.pda_project.models.manager.Item
+import com.example.pda_project.adapters.WarehouseController
+import com.example.pda_project.models.Item
 
 class ViewWarehouseItemsActivity : AppCompatActivity() {
     private lateinit var listView: ListView
@@ -35,7 +35,7 @@ class ViewWarehouseItemsActivity : AppCompatActivity() {
             val selectedItem = itemList[position]
             val intent = Intent(this, EditItemAmountActivity::class.java)
             intent.putExtra("warehouseId", warehouseId)
-            intent.putExtra("itemId", selectedItem.id)
+            intent.putExtra("itemId", selectedItem.productId)
             intent.putExtra("itemName", selectedItem.itemName)
             startActivityForResult(intent, 1)
         }
