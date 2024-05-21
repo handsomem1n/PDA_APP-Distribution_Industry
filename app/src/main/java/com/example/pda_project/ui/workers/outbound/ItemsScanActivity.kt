@@ -1,5 +1,6 @@
 package com.example.pda_project.ui.workers.outbound
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -19,6 +20,7 @@ class ItemsScanActivity : AppCompatActivity() {
 
     private lateinit var itemTextView: TextView
     private lateinit var openScannerButton: Button
+    private lateinit var completeButton: Button
     private lateinit var scanner: Scanner
 
     private lateinit var toteId: String
@@ -35,6 +37,7 @@ class ItemsScanActivity : AppCompatActivity() {
 
         itemTextView = findViewById(R.id.itemTextView)
         openScannerButton = findViewById(R.id.openScannerButton)
+        completeButton = findViewById(R.id.completeButton)
         scanner = Scanner(this)
 
         // 캐시에서 데이터 불러오기
@@ -47,6 +50,11 @@ class ItemsScanActivity : AppCompatActivity() {
 
         openScannerButton.setOnClickListener {
             scanner.openScanner()
+        }
+
+        completeButton.isEnabled = false // 초기에는 비활성화
+        completeButton.setOnClickListener {
+            updateWarehouseStock()
         }
 
         // 바코드 스캔 결과를 받기 위한 리스너 등록
@@ -77,7 +85,7 @@ class ItemsScanActivity : AppCompatActivity() {
 
         if (items.isEmpty()) {
             Toast.makeText(this, "모든 품목 처리가 완료되었습니다.", Toast.LENGTH_SHORT).show()
-            updateWarehouseStock()
+            completeButton.isEnabled = true // 모든 품목 처리가 완료되면 버튼 활성화
         }
     }
 
