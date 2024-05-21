@@ -77,6 +77,7 @@ class OutboundActivity : AppCompatActivity() {
                         }
                         // 캐시에 문서 데이터 저장
                         saveDocumentToCache(toteId, warehouseNumber, items)
+                        //deleteDocument(docId) // 문서 삭제 코드 (현재는 원할한 테스트를 위해 잠시 주석 처리 되어있음)
                         startActivity(Intent(this, WarehouseScanActivity::class.java))
                         finish()
                     } catch (e: Exception) {
