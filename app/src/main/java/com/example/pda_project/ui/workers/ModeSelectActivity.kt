@@ -1,10 +1,12 @@
-package com.example.pda_project
+package com.example.pda_project.ui.workers
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
+import com.example.pda_project.ui.workers.outbound.OutboundActivity
+import com.example.pda_project.R
+import com.example.pda_project.ui.workers.inbound.InboundActivity
 
 class ModeSelectActivity : AppCompatActivity() {
 
@@ -12,23 +14,21 @@ class ModeSelectActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mode_select)
 
-        val pdaExportButton: Button = findViewById(R.id.pdaExportButton)
-        val pdaImportButton: Button = findViewById(R.id.pdaImportButton)
-        val buttonBottomRight: Button = findViewById(R.id.buttonReportError)
-
-        // Button to go to another Activity
-        pdaExportButton.setOnClickListener {
-            val intent = Intent(this, PDAExportActivity::class.java)
-            startActivity(intent)
-        }
-
-        // Button to load a Fragment
-        pdaImportButton.setOnClickListener {
-            //loadFragment(SampleFragment())
-        }
-
-        // Bottom right button action
+        val pdaExportButton = findViewById<Button>(R.id.pdaExportButton)
+        val pdaImportButton = findViewById<Button>(R.id.pdaImportButton)
         val buttonErrorReport = findViewById<Button>(R.id.buttonReportError)
+
+        // 출고 버튼
+        pdaExportButton.setOnClickListener {
+            activityCall(OutboundActivity::class.java)
+        }
+
+        // 입고 버튼
+        pdaImportButton.setOnClickListener {
+            activityCall(InboundActivity::class.java)
+        }
+
+        // 오류보고 버튼
         buttonErrorReport.setOnClickListener {
             val fragment = ReportErrorFragment()
             supportFragmentManager.beginTransaction()
@@ -37,5 +37,11 @@ class ModeSelectActivity : AppCompatActivity() {
                 .addToBackStack(null)
                 .commit()
         }
+    }
+
+    private fun activityCall(activity: Class<*>){
+        val intent = Intent(this, activity)
+        startActivity(intent)
+        finish()
     }
 }

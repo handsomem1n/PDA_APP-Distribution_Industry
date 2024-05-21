@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <android.widget.Button
+        android:id="@+id/errorReportButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10px"
+        android:background="@drawable/button_background"
+        android:gravity="left|center_vertical"
+        android:padding="10dp"
+        android:text="Error Report Title"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textAlignment="viewStart"
+        tools:ignore="RtlCompat" />
+</LinearLayout>

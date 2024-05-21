@@ -1,4 +1,4 @@
-package com.example.pda_project
+package com.example.pda_project.ui.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.pda_project.MainActivity
+import com.example.pda_project.ManagerModeActivity
+import com.example.pda_project.ui.workers.ModeSelectActivity
+import com.example.pda_project.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.security.MessageDigest
@@ -87,7 +91,7 @@ class LoginActivity : AppCompatActivity() {
                                 val userRole = document.getString("role")
                                 userRole?.let { role ->
                                     // 기능 부여
-                                    provideFeaturesBasedOnRole(role)
+                                    usersRole(role)
                                 }
                             } else {
                                 Toast.makeText(this, "해당 사용자를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show()
@@ -106,20 +110,20 @@ class LoginActivity : AppCompatActivity() {
         return bytes.fold("", { str, it -> str + "%02x".format(it) })
     }
 
-    private fun provideFeaturesBasedOnRole(role: String) {
+    private fun usersRole(role: String) {
         when (role) {
-            "admin" -> {
+            "manager" -> {
                 // 관리자 기능 활성화
-                startActivity(Intent(this, MainActivity::class.java))
+                startActivity(Intent(this, ManagerModeActivity::class.java))
                 finish()
             }
-            "users" -> {
+            "workers" -> {
                 // 일반 사용자 기능 활성화
                 startActivity(Intent(this, ModeSelectActivity::class.java))
                 finish()
             }
             else -> {
-                Toast.makeText(this, "Unknown role: $role", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "관리자 승인 이후 로그인 가능합니다.: $role", Toast.LENGTH_SHORT).show()
             }
         }
     }

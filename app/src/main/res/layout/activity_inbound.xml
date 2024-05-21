@@ -1,0 +1,32 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <FrameLayout
+        android:id="@+id/mainScreen"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/buttonOpenScanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="물건 바코드 스캔"
+        android:visibility="visible" />
+
+    <Spinner
+        android:id="@+id/warehouseSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/buttonCompleteInbound"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="입고 완료"
+        android:visibility="visible" />
+
+</LinearLayout>
