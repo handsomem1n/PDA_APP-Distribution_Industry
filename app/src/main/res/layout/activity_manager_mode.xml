@@ -1,28 +1,53 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/inboundAcceptButton"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="입고승인" />
+    <!-- ImageView for background pattern -->
+    <ImageView
+        android:id="@+id/backgroundImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/background_pattern"
+        android:scaleType="centerCrop"
+        android:alpha="0.3"
+        android:contentDescription="@null"/>
 
-    <Button
-        android:id="@+id/ManageWarehouseButton"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="재고확인 및 수정"
-        android:layout_marginTop="16dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <Button
-        android:id="@+id/buttonCheckErrorReports"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="오류 보고서 확인"
-        android:layout_marginTop="16dp" />
+        <Button
+            android:id="@+id/inboundAcceptButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="입고승인"
+            android:backgroundTint="@color/primaryColor"
+            android:textColor="@android:color/white"
+            android:padding="12dp"/>
 
-</LinearLayout>
+        <Button
+            android:id="@+id/ManageWarehouseButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="재고확인 및 수정"
+            android:backgroundTint="@color/secondaryColor"
+            android:textColor="@android:color/white"
+            android:padding="12dp"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/buttonCheckErrorReports"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="오류 보고서 확인"
+            android:backgroundTint="@color/primaryColor"
+            android:textColor="@android:color/white"
+            android:padding="12dp"
+            android:layout_marginTop="16dp" />
+    </LinearLayout>
+</FrameLayout>

@@ -1,24 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.workers.outbound.WarehouseScanActivity">
 
-    <FrameLayout
-        android:id="@+id/mainScreen"
+    <!-- ImageView for background pattern -->
+    <ImageView
+        android:id="@+id/backgroundImageView"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_weight="1"
-        android:layout_alignParentTop="true"
-        />
+        android:layout_height="match_parent"
+        android:src="@drawable/background_pattern"
+        android:scaleType="centerCrop"
+        android:alpha="0.3"
+        android:contentDescription="@null"/>
 
-    <Button
-        android:id="@+id/buttonOpenScanner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="토트 스캔하기"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/mainScreen"
-        android:layout_marginTop="16dp"/>
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <FrameLayout
+            android:id="@+id/mainScreen"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/edit_text_background"
+            android:padding="10dp"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/buttonOpenScanner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="토트 스캔하기"
+            android:backgroundTint="@color/primaryColor"
+            android:textColor="@android:color/white"
+            android:padding="12dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/mainScreen"
+            android:layout_marginTop="16dp"/>
+    </RelativeLayout>
+</FrameLayout>
