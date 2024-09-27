@@ -1,5 +1,7 @@
-# 보고서를 첨부합니다. 이를 참고하세요.
+# 작성한 보고서를 첨부합니다.
 [PDA_final_report.pdf](https://github.com/user-attachments/files/17159932/PDA_final_report.pdf)
+# 시연 영상
+[유튜브링크](https://www.youtube.com/watch?v=2N3npNVdcOY&feature=youtu.be)
 
 # 물류 입고 출고 PDA Application 제작
 물류센터에서 사용 되는 입고, 출고, 관리용 App을 제작 한다
