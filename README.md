@@ -1,3 +1,6 @@
+# 보고서를 첨부합니다. 이를 참고하세요.
+[PDA_final_report.pdf](https://github.com/user-attachments/files/17159932/PDA_final_report.pdf)
+
 # 물류 입고 출고 PDA Application 제작
 물류센터에서 사용 되는 입고, 출고, 관리용 App을 제작 한다
 
@@ -36,4 +39,3 @@ CJ, 쿠팡 등 다양한 물류 센터에서 공통적으로 수행되는 입고
 ## 근무자 기능
 
 ## 관리자 기능
-
