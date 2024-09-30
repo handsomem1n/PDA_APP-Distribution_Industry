@@ -1,10 +1,10 @@
-# 작성한 보고서를 첨부합니다.
-[PDA_final_report.pdf](https://github.com/user-attachments/files/17159932/PDA_final_report.pdf)
-# 시연 영상
-[유튜브링크](https://www.youtube.com/watch?v=2N3npNVdcOY&feature=youtu.be)
+# 유통산업용 재고 관리 PDA Application(입고, 출고, 재고현황파악)
+물류 센터(Hub 등)에서 사용하는 입고, 출고, 관리용 App을 제작
 
-# 물류 입고 출고 PDA Application 제작
-물류센터에서 사용 되는 입고, 출고, 관리용 App을 제작 한다
+## 보고서
+[PDA_final_report.pdf](https://github.com/user-attachments/files/17159932/PDA_final_report.pdf)
+## 시연 영상
+[유튜브링크](https://www.youtube.com/watch?v=2N3npNVdcOY&feature=youtu.be)
 
 ## 개발 기간
 2024.05.01 ~ 2024.06.14
