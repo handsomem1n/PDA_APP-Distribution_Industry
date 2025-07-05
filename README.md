@@ -2,7 +2,8 @@
 물류 센터(Hub 등)에서 사용하는 입고, 출고, 관리용 App을 제작
 
 ## 보고서
-[PDA_final_report.pdf](https://github.com/user-attachments/files/17159932/PDA_final_report.pdf)
+[PDA_final_report.pdf](https://github.com/user-attachments/files/21072447/PDA_final_report.pdf)
+
 ## 시연 영상
 [유튜브링크](https://www.youtube.com/watch?v=2N3npNVdcOY&feature=youtu.be)
 
